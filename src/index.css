@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos para todas las barras de desplazamiento */
+::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento */
+  }
+  
+  /* Estilos para el pulgar (scroll thumb) de todas las barras de desplazamiento */
+  ::-webkit-scrollbar-thumb {
+    --tw-bg-opacity: 1;
+    background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+    border-radius: 6px; /* Radio de borde del pulgar */
+  }
+  
+  /* Estilos para el fondo (track) de todas las barras de desplazamiento */
+  ::-webkit-scrollbar-track {
+    --tw-bg-opacity: 1;
+    background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+  }
+  
