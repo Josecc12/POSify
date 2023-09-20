@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 import { LoginPage } from './auth/pages/LoginPage'
-import { DashBoard } from './POSify/pages'
+import { DashBoardPage } from './POSify/pages'
+import { InventoryPage } from './POSify/pages/InventoryPage'
 
 
 function POSifyApp() {
@@ -9,7 +10,7 @@ function POSifyApp() {
 
   return (
     <>
-      <DashBoard/>
+      <InventoryPage/>
     </>
   )
 }

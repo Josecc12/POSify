@@ -50,7 +50,7 @@ export const Sidebar = () => {
     }>
       <a href="#" className={`${isMenuOpen ? ' ' : 'ml-2'} flex justify-center items-center text-white `}
           onClick={onMenu}>
-        <BiStoreAlt className='text-3xl mr-2' />
+        <BiStoreAlt className='mr-2 text-3xl' />
         <h1 className='text-2xl font-bold'>POSIFY</h1>
       </a>
 

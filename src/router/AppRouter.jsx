@@ -1,7 +1,9 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { LoginPage } from '../auth/pages/LoginPage';
-import { DashBoard } from '../POSify/pages/DashBoard';
+import { DashBoardPage } from '../POSify/pages/DashBoardPage';
+
+import { InventoryPage } from '../POSify/pages/InventoryPage';
 
 export const AppRouter = () => {
 
@@ -21,7 +23,8 @@ export const AppRouter = () => {
         :
         (
           <>
-            <Route path='/' element={<DashBoard/>}/>
+           <Route path='/' element={<DashBoardPage/>}/>
+            <Route path='/invetory' element={<InventoryPage/>}/>
             <Route path='/*' element={<Navigate to='/'/>}/>
           </>
         )
