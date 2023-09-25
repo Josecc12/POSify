@@ -18,7 +18,7 @@ export const PosifyLayout = ({ children }) => {
             <div className={`${isMenuOpen
                 ? 'absolute top-10 left-0   -z-10'
                 : ''}  
-                            container sm:relative sm:top-0 sm:left-0 sm:z-0 `}>
+                sm:relative sm:top-0 sm:left-0 sm:z-0 md:w-3/4 xl:w-full  container `}>
 
                 {children}
 

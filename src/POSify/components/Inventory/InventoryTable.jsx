@@ -1,10 +1,11 @@
 import React from 'react'
 import { InventoryTableRow } from './InventoryTableRow ';
+import { Pagination } from '../Pagination';
 
 export const InventoryTable = ({ data }) => {
     return (
-        
-            <table className="min-w-full mt-5 text-sm bg-white border-solid divide-y-2 divide-gray-200 shadow-2xl ">
+        <>
+            <table className="min-w-full mt-5 text-sm bg-white divide-y-2 divide-gray-200">
 
 
 
@@ -39,7 +40,7 @@ export const InventoryTable = ({ data }) => {
                         <th className="px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap">
                             Stock
                         </th>
-                        <th className="px-4 py-2"></th>
+                        <th className="w-10 px-4 py-2"></th>
                     </tr>
                 </thead>
 
@@ -51,6 +52,10 @@ export const InventoryTable = ({ data }) => {
                     ))}
                 </tbody>
             </table>
-       
+
+            <div className='my-5 '>
+                <Pagination totalItems={data.length} itemsPerPage={1} />
+            </div>
+        </>
     )
 }

@@ -10,29 +10,44 @@ import { useMenuStore } from '../../hooks/useMenu'
 
 
 const menuItems = [
-    {
-      icon: <TfiStatsUp />,
-      text: 'Dashboard',
-      subMenu: ['Resumen de Ventas', 'Ventas por Artículo', 'Ventas por Categoría', 'Ventas por Empleado', 'Recibos'],
-    },
-    {
-      icon: <AiOutlineShopping />,
-      text: 'Articulos',
-      subMenu: ['Lista de Articulos', 'Categorias'],
-    },
-    {
-      icon: <BsPersonVcard />,
-      text: 'Empleados',
-      subMenu: ['Lista de Empleados', 'Permisos'],
-    },
-    {
-      icon: <SlPeople />,
-      text: 'Clientes',
-    },
-    {
-      icon: <FiSettings />,
-      text: 'Settings',
-    },
+  {
+    icon: <TfiStatsUp className='md:text-2xl'/>,
+    text: 'Dashboard',
+    subMenu: [
+      { text: 'Resumen de Ventas', to: '/dashboard/sales-summary' },
+      { text: 'Ventas por Artículo', to: '/dashboard/sales-by-item' },
+      { text: 'Ventas por Categoría', to: '/dashboard/sales-by-category' },
+      { text: 'Ventas por Empleado', to: '/dashboard/sales-by-employee' },
+      { text: 'Recibos', to: '/dashboard/receipts' },
+    ],
+  },
+  {
+    icon: <AiOutlineShopping className='md:text-2xl ' />,
+    text: 'Articulos',
+    subMenu: [
+      { text: 'Lista de Articulos', to: '/articles/list' },
+      { text: 'Categorias', to: '/articles/categories' },
+    ],
+  },
+  {
+    icon: <BsPersonVcard className='md:text-2xl' />,
+    text: 'Empleados',
+    subMenu: [
+      { text: 'Lista de Empleados', to: '/employees/list' },
+      { text: 'Permisos', to: '/employees/permissions' },
+    ],
+  },
+  {
+    icon: <SlPeople className='md:text-2xl'/>,
+    text: 'Clientes',
+    to: '/clients',
+  },
+  {
+    icon: <FiSettings className='md:text-2xl' />,
+    text: 'Settings',
+    to: '/settings',
+  },
+ 
   ];
 
 
@@ -46,6 +61,7 @@ export const Sidebar = () => {
     ${isMenuOpen ? 'flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto ' : 'flex flex-row h-10 w-screen '} 
     
     bg-slate-900 border-r border-slate-800 rtl:border-r-0 rtl:border-l 
+    
     `
     }>
       <a href="#" className={`${isMenuOpen ? ' ' : 'ml-2'} flex justify-center items-center text-white `}
@@ -59,9 +75,7 @@ export const Sidebar = () => {
           {menuItems.map((menuItem, index) => (
             <SidebarItem
               key={index}
-              icon={menuItem.icon}
-              text={menuItem.text}
-              subMenu={menuItem.subMenu}
+              {...menuItem}
             />
           ))}
         </nav>
@@ -73,7 +87,7 @@ export const Sidebar = () => {
           src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="avatar" />
 
           <span className={`${isMenuOpen ? '' : 'hidden'}  mx-2 font-medium `}>John Doe</span>
-          <FiLogOut className={`${isMenuOpen ? '' : 'hidden'}`}/>
+          <FiLogOut className={`${isMenuOpen ? '' : 'hidden'} md:text-2xl`}/>
         </a>
       </div>
     </aside>

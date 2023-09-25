@@ -1,33 +1,35 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { LoginPage } from '../auth/pages/LoginPage';
-import { DashBoardPage } from '../POSify/pages/DashBoardPage';
 
-import { InventoryPage } from '../POSify/pages/InventoryPage';
+import { CategoriesPage, DashBoardPage, InventoryPage , ItemPage} from '../POSify/pages';
+
 
 export const AppRouter = () => {
 
-  const status = 'authenticated' ;
+  const status = 'authenticated';
 
   return (
     <Routes>
       {
-        status === 'not-authenticated' 
-        ? 
-        (
+        status === 'not-authenticated'
+          ?
+          (
             <>
-            <Route path='/auth/*' element={<LoginPage/>}/> 
-            <Route path='/*' element={<Navigate to='/auth/login'/>}/>
+              <Route path='/auth/*' element={<LoginPage />} />
+              <Route path='/*' element={<Navigate to='/auth/login' />} />
             </>
-        )
-        :
-        (
-          <>
-           <Route path='/' element={<DashBoardPage/>}/>
-            <Route path='/invetory' element={<InventoryPage/>}/>
-            <Route path='/*' element={<Navigate to='/'/>}/>
-          </>
-        )
+          )
+          :
+          (
+            <>
+              <Route path='/' element={<DashBoardPage />} />
+              <Route path='/articles/list' element={<InventoryPage />} />
+              <Route path='/articles/categories' element={<CategoriesPage />} />
+              <Route path='/articles/list/:id' element={<ItemPage />} />
+              <Route path='/*' element={<Navigate to='/' />} />
+            </>
+          )
 
       }
     </Routes>
