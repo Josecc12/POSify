@@ -298,7 +298,7 @@ export const InventoryPage = () => {
 
 
         <div className="overflow-x-auto overflow-y-auto shadow-2xl">
-          <InventoryTable data={testData} />
+          <InventoryTable data={testData2} />
         </div>
 
 
