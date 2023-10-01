@@ -1,7 +1,7 @@
 import React from 'react';
 import { PosifyLayout } from '../../layout/PosifyLayout';
-import { DropDown } from '../components/DropDown';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { Link } from 'react-router-dom'; // Importa Link de React Router
 
 // Datos de prueba (reemplaza con tus propios datos)
 const rolesData = [
@@ -50,15 +50,13 @@ export const PermissionsPage = () => {
                     {role.permissions.join(', ')}
                   </td>
                   <td className="px-4 py-2 border">
-                    <button
+                    {/* Utiliza Link para redireccionar a RoleDetailsPage */}
+                    <Link
+                      to={`/roledetailspage?id=${role.id}`} // Pasa el ID del rol en la URL
                       className="px-2 py-1 text-white bg-indigo-600 rounded hover:bg-indigo-700"
-                      onClick={() => {
-                        // Lógica para manejar la acción "Ver" del rol
-                        console.log(`Ver detalles del rol ${role.name}`);
-                      }}
                     >
                       View
-                    </button>
+                    </Link>
                   </td>
                 </tr>
               ))}
