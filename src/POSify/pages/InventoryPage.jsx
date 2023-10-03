@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PosifyLayout } from '../../layout/PosifyLayout'
 import { InventoryTable } from '../components/Inventory/InventoryTable'
 import { AiOutlineSearch } from "react-icons/ai";
@@ -246,7 +246,7 @@ const testData2 = [
     stock: 55,
     store: 'Tienda A',
   },
-  
+
 ];
 
 
@@ -254,6 +254,13 @@ const testData2 = [
 export const InventoryPage = () => {
 
   const navigate = useNavigate()
+
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const onSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  }
+
 
   return (
     <PosifyLayout>
@@ -266,18 +273,19 @@ export const InventoryPage = () => {
 
           <button
             className="inline-block w-full px-12 py-3 text-sm font-medium text-white bg-indigo-600 border border-indigo-600 rounded sm:w-max hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-            onClick={()=>navigate('/articles/list/id=?')}
-           >
+            onClick={() => navigate('/articles/list/id=?')}
+          >
             Add Product
           </button>
 
 
           <div className='flex flex-col-reverse sm:flex-row '>
-            <DropDown buttonLabel={'Tienda'} anchorLabels={['Todas','Tienda A', 'Tienda B' ]  }  filterName={'store'}/>
-            <DropDown buttonLabel={'Categoria'} anchorLabels={['Todas','Electrónica', 'Ropa']} filterName={'category'}/>
+            <DropDown buttonLabel={'Tienda'} anchorLabels={['Todas', 'Tienda A', 'Tienda B']} filterName={'store'} />
+            <DropDown buttonLabel={'Categoria'} anchorLabels={['Todas', 'Electrónica', 'Ropa']} filterName={'category'} />
 
             <div className='flex flex-row-reverse justify-end my-4'>
-              <input type="text" className='self-center w-full mx-2 text-sm text-gray-700 border-indigo-500 rounded h-7' />
+              <input type="text" className='self-center w-full mx-2 text-sm text-gray-700 border-indigo-500 rounded h-7' 
+              value={searchTerm} onChange={onSearchChange} />
               <AiOutlineSearch className='self-center text-2xl text-indigo-600' />
             </div>
 
@@ -289,7 +297,7 @@ export const InventoryPage = () => {
 
 
         <div className="overflow-x-auto overflow-y-auto shadow-2xl">
-          <InventoryTable data={testData2} />
+          <InventoryTable data={testData2} searchTerm={searchTerm} />
         </div>
 
 
