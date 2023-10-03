@@ -1,13 +1,13 @@
 import React from 'react'
 import { PosifyLayout } from '../../layout/PosifyLayout'
 import { StoreTable } from '../components/Inventory/StoreTable'
+import { BsFillTrashFill } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
 
 export const ItemPage = () => {
 
-    const onSum = () => {
-        //sum 2 numbers
-
-    }
+    const navigate = useNavigate();
+    
 
     return (
         <PosifyLayout>
@@ -130,15 +130,15 @@ export const ItemPage = () => {
                         <hr />
                         <div className='flex justify-between my-4'>
                             <p>Seguir el Inventario</p>
-                            <label class="relative h-6 w-14 cursor-pointer">
-                                <input type="checkbox" class="peer sr-only" />
+                            <label className="relative h-6 cursor-pointer w-14">
+                                <input type="checkbox" className="sr-only peer" />
 
                                 <span
-                                    class="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-indigo-500"
+                                    className="absolute inset-0 transition bg-gray-300 rounded-full peer-checked:bg-indigo-500"
                                 ></span>
 
                                 <span
-                                    class="absolute inset-y-0 start-0 m-0 h-6 w-6 rounded-full bg-white transition-all peer-checked:start-8"
+                                    className="absolute inset-y-0 w-6 h-6 m-0 transition-all bg-white rounded-full start-0 peer-checked:start-8"
                                 ></span>
                             </label>
                         </div>
@@ -185,18 +185,18 @@ export const ItemPage = () => {
                         <hr />
 
                         <div className='my-4'>
-                            <label for="file" class="block text-sm text-gray-500 dark:text-gray-300">Image</label>
+                            <label className="block text-sm text-gray-500 ">Image</label>
 
-                            <label for="dropzone-file" class="flex flex-col items-center w-full max-w-lg p-5 mx-auto mt-2 text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500 dark:text-gray-400">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                            <label className="flex flex-col items-center w-full max-w-lg p-5 mx-auto mt-2 text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer rounded-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 text-gray-500 ">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
                                 </svg>
 
-                                <h2 class="mt-1 font-medium tracking-wide text-gray-700 dark:text-gray-200">Image </h2>
+                                <h2 className="mt-1 font-medium tracking-wide text-gray-700 ">Image </h2>
 
-                                <p class="mt-2 text-xs tracking-wide text-gray-500 dark:text-gray-400">Upload or darg & drop your file SVG, PNG, JPG or GIF. </p>
+                                <p className="mt-2 text-xs tracking-wide text-gray-500 ">Upload or darg & drop your file SVG, PNG, JPG or GIF. </p>
 
-                                <input id="dropzone-file" type="file" class="hidden" />
+                                <input type="file" className="hidden" />
                             </label>
                         </div>
 
@@ -206,7 +206,31 @@ export const ItemPage = () => {
 
                 </div>
 
-                <div className='w-full p-5 lg:w-4/6'>
+                <div className='flex justify-between w-full my-4 lg:w-4/6 md:my-0 md:mt-4'>
+
+                    <div>
+                        <button
+                            className="inline-block w-10 h-full px-3 py-3 text-sm font-medium text-white bg-red-600 border border-red-600 rounded sm:w-max hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500"
+                        >
+                            <BsFillTrashFill className='text-center' />
+                        </button>
+
+                    </div>
+
+                    <div className='flex justify-end w-2/4 jus'>
+                        <button
+                            className="inline-block w-full px-2 py-3 text-sm font-medium text-white border rounded border-slate-600 bg-slate-600 sm:w-full hover:bg-transparent hover:text-slate-600 focus:outline-none focus:ring active:text-slate-500 "
+                            onClick={() => navigate(-1)}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            className="inline-block w-full px-3 py-3 ml-2 text-sm font-medium text-white bg-indigo-600 border border-indigo-600 rounded sm:w-full hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                        >
+                            Save
+                        </button>
+
+                    </div>
 
 
                 </div>

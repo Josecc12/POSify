@@ -1,8 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { InventoryTableRow } from './InventoryTableRow ';
 import { Pagination } from '../Pagination';
+import { usePosStore } from '../../../hooks/usePos';
 
 export const InventoryTable = ({ data }) => {
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 15; // Cantidad de elementos por página
+    const { inventoryFilters } = usePosStore();
+
+    // Aplica el filtro cada vez que cambie inventoryFilters
+    const filteredData = data.filter((item) => {
+        const storeMatch = inventoryFilters.store === 'All' || item.store === inventoryFilters.store;
+        const categoryMatch = inventoryFilters.category === 'All' || item.category === inventoryFilters.category;
+        return storeMatch && categoryMatch;
+    });
+
+    // Calcula totalItems basado en los datos filtrados
+    const totalItems = filteredData.length;
+
+    // Actualiza la tabla cuando cambie inventoryFilters
+    useEffect(() => {
+        setCurrentPage(1); // Reinicia a la primera página al cambiar el filtro
+    }, [inventoryFilters]);
+
+    // Lógica para calcular los índices de inicio y fin de los elementos a mostrar en la página actual
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+    
+
     return (
         <>
             <table className="min-w-full mt-5 text-sm bg-white divide-y-2 divide-gray-200">
@@ -47,14 +75,15 @@ export const InventoryTable = ({ data }) => {
 
 
                 <tbody className="divide-y divide-gray-200">
-                    {data.map((item, index) => (
+                    {currentItems.map((item, index) => (
                         <InventoryTableRow key={index} {...item} />
                     ))}
                 </tbody>
             </table>
 
             <div className='my-5 '>
-                <Pagination totalItems={data.length} itemsPerPage={1} />
+                <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage}
+                    currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </div>
         </>
     )
