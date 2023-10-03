@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PosifyLayout } from '../../layout/PosifyLayout'
 import { StoreTable } from '../components/Inventory/StoreTable'
 import { BsFillTrashFill } from "react-icons/bs";
@@ -7,7 +7,25 @@ import { useNavigate } from 'react-router-dom';
 export const ItemPage = () => {
 
     const navigate = useNavigate();
-    
+
+    const [imagePreview, setImagePreview] = useState(null);
+
+    const onImageChange = (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                setImagePreview(e.target.result);
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            setImagePreview(null);
+        }
+    };
+
 
     return (
         <PosifyLayout>
@@ -196,7 +214,18 @@ export const ItemPage = () => {
 
                                 <p className="mt-2 text-xs tracking-wide text-gray-500 ">Upload or darg & drop your file SVG, PNG, JPG or GIF. </p>
 
-                                <input type="file" className="hidden" />
+                                <input type="file" className="hidden"
+                                    onChange={onImageChange}
+                                    accept="image/*" />
+
+                                {imagePreview && (
+                                    <img
+                                        src={imagePreview}
+                                        alt="Preview"
+                                        className="h-auto max-w-full mt-4"
+                                    />
+                                )}
+
                             </label>
                         </div>
 

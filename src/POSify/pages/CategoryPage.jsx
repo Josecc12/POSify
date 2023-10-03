@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 export const CategoryPage = () => {
 
+ 
+
   const [selectedDiv, setSelectedDiv] = useState(null);
 
   const navigate = useNavigate();
