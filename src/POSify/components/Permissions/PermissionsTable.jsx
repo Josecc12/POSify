@@ -1,27 +1,24 @@
 import React from 'react';
-import RoleTableRow from './RoleTableRow';
+import PermissionsTableRow from './PermissionsTableRow';
 
-export const RoleTable = ({ availablePermissions }) => {
+export const PermissionsTable = ({ rolesData }) => {
   return (
     <div className="overflow-x-auto overflow-y-auto shadow-2xl">
       <table className="min-w-full mt-5 text-sm bg-white divide-y-2 divide-gray-200">
         <thead className="ltr:text-left rtl:text-right">
           <tr>
             <th className="w-10 px-4 py-2 font-medium text-left text-gray-900 left whitespace-nowrap">
-              Permiso
+              Rol
             </th>
-            <th className="w-10 px-4 py-2 font-medium text-left text-gray-900 left whitespace-nowrap">
-              Acciones
+            <th className="px-4 py-2 font-medium text-left text-gray-900 left whitespace-nowrap">
+              Permisos
             </th>
+            <th className="w-10 px-4 py-2"></th>
           </tr>
         </thead>
-
         <tbody className="divide-y divide-gray-200">
-          {availablePermissions.map((permission) => (
-            <RoleTableRow
-              key={permission.id}
-              permission={permission}
-            />
+          {rolesData.map((role) => (
+            <PermissionsTableRow key={role.id} role={role} />
           ))}
         </tbody>
       </table>
