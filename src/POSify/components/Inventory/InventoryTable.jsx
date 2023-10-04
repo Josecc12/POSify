@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { InventoryTableRow } from './InventoryTableRow ';
+import { InventoryTableRow } from './InventoryTableRow';
 import { Pagination } from '../Pagination';
 import { usePosStore } from '../../../hooks/usePos';
 

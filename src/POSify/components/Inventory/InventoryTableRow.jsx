@@ -5,6 +5,7 @@ export const InventoryTableRow = ({ id, name, category, price, cost, utility, st
 
     const navigate = useNavigate()
     return (
+        <>
         <tr onClick={()=>navigate(`/articles/list/id=${id}`)}>
             <td className="px-4 py-2">
                 <label className="sr-only">{`Row ${id}`}</label>
@@ -29,5 +30,6 @@ export const InventoryTableRow = ({ id, name, category, price, cost, utility, st
                 </a>
             </td>
         </tr>
+        </>
     )
 }
