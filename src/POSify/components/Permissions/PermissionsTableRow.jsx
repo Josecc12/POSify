@@ -1,24 +1,40 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const PermissionsTableRow = ({ role }) => {
+export const PermissionsTableRow = ({id, role ,acces,employees}) => {
+
+  const navigate = useNavigate();
+
   return (
-    <tr key={role.id}>
-      <td className="px-4 py-2 border">{role.name}</td>
-      <td className="px-4 py-2 border">
-        {role.permissions.join(', ')}
-      </td>
-      <td className="px-4 py-2 border">
-        {/* Utiliza Link para redireccionar a RoleDetailsPage */}
-        <Link
-          to={`/roledetailspage?id=${role.id}`} // Pasa el ID del rol en la URL
-          className="px-2 py-1 text-white bg-indigo-600 rounded hover:bg-indigo-700"
-        >
-          View
-        </Link>
-      </td>
-    </tr>
-  );
-};
+    <tr onClick={()=>navigate(`/role-detail/id=${id}`)}>
+      <td className="px-4 py-2" >
+        <label className="sr-only">1</label>
+        <input
+          className="w-5 h-5 border-gray-300 rounded"
+          type="checkbox"
 
-export default PermissionsTableRow;
+        />
+      </td>
+
+      <td className="w-2/4 px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap" >
+
+        <div className="flex items-center gap-x-2">
+          <div className={`object-cover w-10 h-10 rounded-full bg-orange-400 `}></div>
+          <div>
+            <h2 className="font-medium text-gray-800 dark:text-white ">{role}</h2>
+
+          </div>
+
+        </div>
+      </td>
+
+      <td className="px-4 py-2 text-left gray-700 tex-ce whitespace-nowrap">{acces}</td>
+
+      <td className="px-4 py-2 text-right text-gray-700 whitespace-nowrap">{employees}</td>
+
+    </tr>
+  )
+}
+
+
+

@@ -30,7 +30,7 @@ export const AppRouter = () => {
               <Route path='/articles/categories/:id' element={<CategoryPage />} />
               <Route path='/*' element={<Navigate to='/' />} />
               <Route path='/employees/permissions' element={<PermissionsPage />} />
-              <Route path='/roledetailspage' element={<RoleDetailsPage />} />
+              <Route path='/role-detail/:id' element={<RoleDetailsPage />} />
             </>
           )
 
