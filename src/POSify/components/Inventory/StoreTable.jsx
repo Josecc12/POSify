@@ -83,12 +83,12 @@ export const StoreTable = () => {
                                 <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>
 
                                     <div>
-                                        <label for="Quantity" class="sr-only"> Quantity </label>
+                                        <label  className="sr-only"> Quantity </label>
 
-                                        <div class="flex items-center gap-1">
+                                        <div className="flex items-center gap-1">
                                             <label
                                                 type="button"
-                                                class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
+                                                className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
                                             >
                                                 &minus;
                                             </label>
@@ -96,12 +96,12 @@ export const StoreTable = () => {
                                             <input
                                                 value={store.lowInventary}
                                                 type="number"
-                                                class="h-10 w-24 rounded border-gray-200 sm:text-sm text-center"
+                                                className="w-24 h-10 text-center border-gray-200 rounded sm:text-sm"
                                             />
 
                                             <label
                                                 type="button"
-                                                class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
+                                                className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
                                             >
                                                 &#43;
                                             </label>
