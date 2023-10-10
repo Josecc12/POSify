@@ -4,19 +4,24 @@ import { createSlice } from "@reduxjs/toolkit";
 export const posSlice = createSlice({
     name: 'pos',
     initialState: {
-        activeView: null,
-        isMenuOpen: false,     
+        isMenuOpen: false,  
+        inventoryFilters: {
+            store: 'All',
+            category: 'All',
+        }   
 
     },
     reducers: {
 
 
-        setAcitveView: (state, { payload }) => {
-            state.activeView = payload;
-        },
+        
         toggleMenu: (state) => {
             state.isMenuOpen = !state.isMenuOpen;
         },
+
+        setInventoryFilters: (state, { payload }) => {
+            state.inventoryFilters = payload;
+          },
        
 
 
@@ -26,4 +31,4 @@ export const posSlice = createSlice({
 
 });
 
-export const { setAcitveView, toggleMenu } = posSlice.actions;
+export const {toggleMenu , setInventoryFilters } = posSlice.actions;

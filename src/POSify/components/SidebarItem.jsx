@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { MdExpandMore } from "react-icons/md";
-import { SideberSubItem } from './SideberSubItem';
+import { SideberSubItem } from './SidebarSubItem';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -20,7 +20,6 @@ export const SidebarItem = ({ icon, text, subMenu ,to }) => {
             setIsDrop(!isDrop)  
         }
         else{
-            console.log('nav')
             navigate(to)
         }
         
@@ -35,11 +34,11 @@ export const SidebarItem = ({ icon, text, subMenu ,to }) => {
                 {icon}
                 <span className="mx-4 font-medium">{text}</span>
 
-                {subMenu && <MdExpandMore  />}
+                {subMenu && <MdExpandMore data-testid="expand-icon" />}
 
             </a>
 
-            {subMenu && <SideberSubItem visible={isDrop} items={subMenu} />}
+            {subMenu && <SideberSubItem visible={isDrop} items={subMenu}/>}
 
         </div>
     )
