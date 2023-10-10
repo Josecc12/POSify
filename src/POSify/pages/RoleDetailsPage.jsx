@@ -4,17 +4,17 @@ import { RoleTable } from '../components/Role/RoleTable';
 
 
 const POSoptions = [
-  "Accept payments",
-  "Apply restricted access discounts",
-  "Change taxes in a sale",
-  "Open the cash drawer without making a sale",
-  "View all receipts",
-  "Process purchase returns",
-  "Reprint and resend receipts",
-  "Edit items",
-  "View the cost of items",
-  "Modify settings",
-  "Access live chat support"
+  "Aceptar pagos",
+  "Aplicar descuentos con acceso restringido",
+  "Cambiar los impuestos en una venta",
+  "Abrir el cajón de dinero sin realizar una venta",
+  "Ver todos los recibos",
+  "Procesar devoluciones de compras",
+  "Reimprimir y reenviar recibos",
+  "Editar artículos",
+  "Ver el costo de los artículos",
+  "Modificar configuraciones",
+
 
 ]
 
@@ -60,7 +60,7 @@ export const RoleDetailsPage = () => {
           <div className="flow-root divide-y divide-gray-100 ">
 
 
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between mt-5'>
               <h2 className='text-2xl font-semibold '>POS</h2>
             
               <label className="relative h-6 cursor-pointer w-14">
@@ -79,7 +79,7 @@ export const RoleDetailsPage = () => {
             {
               POSoptions.map((option, index) => (
                 <div className='flex justify-between my-4' key={index}>
-                  <p className='flex-wrap w-fit'>{option}</p>
+                  <p className='flex-wrap w-4/5'>{option}</p>
                   <input type="checkbox" className='w-5 h-5 mr-3' />
                 </div>
               ))
