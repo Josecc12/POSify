@@ -5,7 +5,7 @@ export const menuSlice = createSlice({
     name: 'menu',
     initialState: {
         isMenuOpen: true,
-        collapsedMenus: [] /*['Dashboard','Articulos'] */
+     
     },
     reducers: {
         toggleMenu: (state) => {

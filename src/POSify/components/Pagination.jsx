@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { MdOutlineNavigateBefore, MdOutlineNavigateNext } from 'react-icons/md'
-export const Pagination = ({ totalItems, itemsPerPage }) => {
+import React, { useState, useEffect } from 'react';
+import { MdOutlineNavigateBefore, MdOutlineNavigateNext } from 'react-icons/md';
 
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
-    const [currentPage, setCurrentPage] = useState(1);
+export const Pagination = ({ totalItems, itemsPerPage, currentPage, setCurrentPage }) => {
+    // Calcula totalPages en función de totalItems
+    const [totalPages, setTotalPages] = useState(Math.ceil(totalItems / itemsPerPage));
+
+    useEffect(() => {
+        // Actualiza totalPages cuando cambie totalItems
+        setTotalPages(Math.ceil(totalItems / itemsPerPage));
+    }, [totalItems, itemsPerPage]);
 
     const handlePrevPage = () => {
         if (currentPage > 1) {
@@ -23,7 +28,6 @@ export const Pagination = ({ totalItems, itemsPerPage }) => {
 
     const renderPageNumbers = () => {
         const pageNumbers = [];
-
         const startPage = Math.max(1, currentPage - 2);
         const endPage = Math.min(totalPages, startPage + 4);
 
@@ -49,10 +53,8 @@ export const Pagination = ({ totalItems, itemsPerPage }) => {
         }
     }, [currentPage, totalPages]);
 
-
     return (
         <>
-
             <ol className="flex justify-center gap-1 text-xs font-medium">
                 <li>
                     <a
@@ -78,7 +80,6 @@ export const Pagination = ({ totalItems, itemsPerPage }) => {
                     </a>
                 </li>
             </ol>
-
         </>
-    )
-}
+    );
+};
