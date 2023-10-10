@@ -45,29 +45,17 @@ export const ItemPage = () => {
                                 <input
                                     type="text"
                                     placeholder="Product Name"
-                                    className="w-full pl-2 mt-1 border-gray-200 rounded-md shadow-sm h-7 sm:text-sm "
+                                    className="w-full mt-1 border-gray-200 rounded-md shadow-sm sm:text-sm"
                                 />
                             </div>
 
                             <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
                                 <dt className="font-medium text-gray-900">Category</dt>
-                                <div>
-
-
-                                    <select
-                                       
-                                        class="h-6 mt-1.5 w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm"
-                                    >
-                                        <option value="">Please select</option>
-                                        <option value="JM">John Mayer</option>
-                                        <option value="SRV">Stevie Ray Vaughn</option>
-                                        <option value="JH">Jimi Hendrix</option>
-                                        <option value="BBK">B.B King</option>
-                                        <option value="AK">Albert King</option>
-                                        <option value="BG">Buddy Guy</option>
-                                        <option value="EC">Eric Clapton</option>
-                                    </select>
-                                </div>
+                                <input
+                                    type="text"
+                                    placeholder="Category"
+                                    className="w-full mt-1 border-gray-200 rounded-md shadow-sm sm:text-sm"
+                                />
                             </div>
 
 
@@ -82,7 +70,7 @@ export const ItemPage = () => {
 
                                 <textarea
 
-                                    className="w-full p-4 mt-2 align-top border-gray-200 rounded-lg shadow-sm sm:text-sm"
+                                    className="w-full mt-2 align-top border-gray-200 rounded-lg shadow-sm sm:text-sm"
                                     rows="4"
                                     placeholder="Enter any additional product description..."
                                 ></textarea>
@@ -111,9 +99,9 @@ export const ItemPage = () => {
                             <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
                                 <dt className="font-medium text-gray-900">Price</dt>
                                 <input
-                                    type="number"
+                                    type="text"
                                     placeholder="Q 00.00"
-                                    className="w-full px-2 py-1 mt-1 border-gray-200 rounded-md shadow-sm sm:text-sm"
+                                    className="w-full mt-1 border-gray-200 rounded-md shadow-sm sm:text-sm"
                                 />
                             </div>
 
@@ -121,9 +109,9 @@ export const ItemPage = () => {
                             <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
                                 <dt className="font-medium text-gray-900">Cost</dt>
                                 <input
-                                    type="number"
+                                    type="text"
                                     placeholder="Q 00.00"
-                                    className="w-full px-2 py-1 mt-1 border-gray-200 rounded-md shadow-sm sm:text-sm"
+                                    className="w-full mt-1 border-gray-200 rounded-md shadow-sm sm:text-sm"
                                 />
                             </div>
 
@@ -131,8 +119,8 @@ export const ItemPage = () => {
                                 <dt className="font-medium text-gray-900">REF</dt>
                                 <input
                                     type="text"
-                                    placeholder='#0000'
-                                    className="w-full px-2 py-1 mt-1 border-gray-200 rounded-md shadow-sm sm:text-sm"
+
+                                    className="w-full mt-1 border-gray-200 rounded-md shadow-sm sm:text-sm"
                                 />
                             </div>
 
@@ -140,8 +128,8 @@ export const ItemPage = () => {
                                 <dt className="font-medium text-gray-900">BarCode</dt>
                                 <input
                                     type="text"
-                                    placeholder="000000-000000"
-                                    className="w-full px-2 py-1 mt-1 border-gray-200 rounded-md shadow-sm sm:text-sm"
+                                    placeholder=""
+                                    className="w-full mt-1 border-gray-200 rounded-md shadow-sm sm:text-sm"
                                 />
                             </div>
 

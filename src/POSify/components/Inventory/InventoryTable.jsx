@@ -5,7 +5,7 @@ import { usePosStore } from '../../../hooks/usePos';
 
 export const InventoryTable = ({ data, searchTerm }) => {
 
-    console.log('render ')
+    
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 15; 
     const { inventoryFilters } = usePosStore();

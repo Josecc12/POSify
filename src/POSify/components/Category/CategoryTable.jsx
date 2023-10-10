@@ -3,15 +3,18 @@ import { CategoryTableRow } from './CategoryTableRow'
 
 const categories = [
 
-    {
+    {   
+        id: 1,
         color: 'bg-red-500',
         category : 'Food'
     },
     {
+        id: 2,
         color: 'bg-indigo-500',
         category : 'Service'
     },
     {
+        id: 3,
         color: 'bg-green-500',
         category : 'Drink'
     }
@@ -45,7 +48,9 @@ export const CategoryTable = () => {
                 <tbody>
                     {
                         categories.map((category) => (
-                            <CategoryTableRow key={category.category} color={category.color} category={category.category} />
+                            <CategoryTableRow key={category.category} 
+                            id={category.id}
+                            color={category.color} category={category.category} />
                         ))
                     }
                 </tbody>

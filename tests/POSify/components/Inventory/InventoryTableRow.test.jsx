@@ -1,17 +1,19 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { toBeInTheDocument } from '@testing-library/jest-dom';
-import { useNavigate } from 'react-router-dom';
+import { MemoryRouter , useNavigate } from 'react-router-dom';
 import { InventoryTableRow } from '../../../../src/POSify/components/Inventory/InventoryTableRow';
-import userEvent from '@testing-library/user-event';
+import {  toBeInTheDocument } from '@testing-library/jest-dom';
 
+const mockedUseNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-    useNavigate: jest.fn(),
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: () => mockedUseNavigate,
+
 }));
 
+
 describe('InventoryTableRow', () => {
-    const mockNavigate = jest.fn();
-    useNavigate.mockReturnValue(mockNavigate);
+
 
     const props = {
         id: 1,
@@ -24,28 +26,42 @@ describe('InventoryTableRow', () => {
     };
 
     it('renders the component with the correct props', () => {
-        const {getByText } =render(<InventoryTableRow {...props} />);
+        const { getByText } = render(
+            <MemoryRouter>
+                <table>
+                    <tbody>
+                        <InventoryTableRow {...props} />
+                    </tbody>
+                </table>
+
+            </MemoryRouter>
+        );
 
         expect(screen.getByText(props.name)).toBeInTheDocument();
         expect(screen.getByText(props.category)).toBeInTheDocument();
         expect(screen.getByText(props.price)).toBeInTheDocument();
         expect(screen.getByText(props.cost)).toBeInTheDocument();
+        
     });
 
     it('navigates to the correct URL when clicked', () => {
-        // Mock the navigate function
-        const mockNavigate = jest.fn();
-        jest.requireMock('react-router-dom').useNavigate.mockReturnValue(mockNavigate);
-        const { getByRole } = render(<InventoryTableRow {...props} />);
+        render(
+            <MemoryRouter>
+              <table>
+                <tbody>
+                  <InventoryTableRow {...props} />
+                </tbody>
+              </table>
+            </MemoryRouter>
+          );
 
-        // Find the table row by its role
-        const tableRow = getByRole('row');
+          fireEvent.click(screen.getByText(props.name));
+          
 
-        // Simulate a click event on the table row
-        fireEvent.click(tableRow);
+          expect(mockedUseNavigate).toHaveBeenCalledWith(`/articles/list/id=${props.id}`);
 
-        // Check if the navigate function was called with the correct URL
-        expect(mockNavigate).toHaveBeenCalledWith('/articles/list/id=1');
     });
+
+  
 
 });
