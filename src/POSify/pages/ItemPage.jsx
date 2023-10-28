@@ -1,58 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PosifyLayout } from '../../layout/PosifyLayout'
+import { StoreTable } from '../components/Inventory/StoreTable'
+import { BsFillTrashFill } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
+import { Inventory, ProductDetails, Stores } from '../components/Item';
+import { ViewInPOS } from '../components/Item/ViewInPOS';
 
 export const ItemPage = () => {
+
+    const navigate = useNavigate();
+
+
+
     return (
         <PosifyLayout>
             <div className="h-full max-h-screen p-6 overflow-x-auto border-gray-400 border-solid">
-                <div className='shadow-2xl'>
-                    <label
-                        className="block px-3 py-2 overflow-hidden rounded-md shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-                    >
-                        <span className="text-xs font-medium text-gray-700"> Nombre </span>
-                        <input
-                            type="text"
-                            className="w-full p-0 mt-1 border-none focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-                        />
-                    </label>
+                <ProductDetails />
 
-                    <label
-                        className="block px-3 py-2 overflow-hidden rounded-md shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-                    >
-                        <span className="text-xs font-medium text-gray-700"> Categoria </span>
-                        <select
+                <Inventory />
 
-                            className="w-full p-0 mt-1 border-none focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                <Stores />
+
+                <ViewInPOS />
+
+
+                {/*Buttons*/}
+
+                <div className='flex justify-between w-full my-4 lg:w-4/6 md:my-0 md:mt-4'>
+
+                    <div>
+                        <button
+                            className="inline-block w-10 h-full px-3 py-3 text-sm font-medium text-white bg-red-600 border border-red-600 rounded sm:w-max hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500"
                         >
-
-                            <option className='relative left-0' value="volvo">Food</option>
-
-                        </select>
-                    </label>
-
-                    <div className='mt-3'>
-
-
-                        <label className="sr-only">Order notes</label>
-
-                        <div
-                            className="overflow-hidden border border-gray-200 rounded-lg shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-                        >
-                            <textarea
-
-                                className="w-full align-top border-none resize-none focus:ring-0 sm:text-sm"
-                                rows="4"
-                                placeholder="Drescription"
-                            ></textarea>
-
-
-                        </div>
+                            <BsFillTrashFill className='text-center' />
+                        </button>
 
                     </div>
 
-                    
+                    <div className='flex justify-end w-2/4 jus'>
+                        <button
+                            className="inline-block w-full px-2 py-3 text-sm font-medium text-white border rounded border-slate-600 bg-slate-600 sm:w-full hover:bg-transparent hover:text-slate-600 focus:outline-none focus:ring active:text-slate-500 "
+                            onClick={() => navigate(-1)}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            className="inline-block w-full px-3 py-3 ml-2 text-sm font-medium text-white bg-indigo-600 border border-indigo-600 rounded sm:w-full hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                        >
+                            Save
+                        </button>
+
+                    </div>
+
 
                 </div>
+
+
             </div>
         </PosifyLayout>
     )
