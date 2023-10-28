@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMenuStore } from '../../hooks/useMenu';
 import { PosifyLayout } from '../../layout/PosifyLayout';
-import AgregarEmpleado from '../components/Employees/AddEmployee'; // Importa el componente AgregarEmpleado
+import ListEmployee from '../components/Employees/ListEmployee'; // Importa el componente AgregarEmpleado
 
 export const EmployeesPage = () => {
     const { isMenuOpen } = useMenuStore();
@@ -9,7 +9,7 @@ export const EmployeesPage = () => {
     return (
         <PosifyLayout>
             <div className="content">
-                 <AgregarEmpleado />
+                 <ListEmployee/>
             </div>
         </PosifyLayout>
     );
