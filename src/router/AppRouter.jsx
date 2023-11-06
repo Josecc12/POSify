@@ -2,7 +2,12 @@ import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { LoginPage } from '../auth/pages/LoginPage';
 
+
 import { CategoriesPage, CategoryPage, DashBoardPage, InventoryPage , ItemPage, PermissionsPage, RoleDetailsPage } from '../POSify/pages';
+
+import { EmployeesPage } from '../POSify/pages/EmployeesPage';
+import AgregarEmpleado from '../POSify/components/Employees/AddEmployee';
+
 
 
 export const AppRouter = () => {
@@ -28,6 +33,8 @@ export const AppRouter = () => {
               <Route path='/articles/list/:id' element={<ItemPage />} />
               <Route path='/articles/categories' element={<CategoriesPage />} />
               <Route path='/articles/categories/:id' element={<CategoryPage />} />
+              <Route path='/employees/list' element={<EmployeesPage />} />
+              <Route path='/employees/list/AddEmployee' element={<AgregarEmpleado/>} />
               <Route path='/*' element={<Navigate to='/' />} />
               <Route path='/employees/permissions' element={<PermissionsPage />} />
               <Route path='/role-detail/:id' element={<RoleDetailsPage />} />
