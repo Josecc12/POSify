@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const InventoryTableRow = ({ id, name, category, price, cost, utility, stock }) => {
+export const InventoryTableRow = ({ id, name, category, price, cost, utility = price -cost, stock }) => {
 
     const navigate = useNavigate()
     return (
@@ -19,15 +19,15 @@ export const InventoryTableRow = ({ id, name, category, price, cost, utility, st
             <td className="px-4 py-2 text-gray-700 whitespace-nowrap">{category}</td>
             <td className="px-4 py-2 text-gray-700 whitespace-nowrap">{price}</td>
             <td className="px-4 py-2 text-gray-700 whitespace-nowrap">{cost}</td>
-            <td className="px-4 py-2 text-gray-700 whitespace-nowrap">{utility}</td>
+            <td className="px-4 py-2 text-gray-700 whitespace-nowrap">{utility.toFixed(2)}</td>
             <td className="px-4 py-2 text-gray-700 whitespace-nowrap">{stock}</td>
             <td className="px-4 py-2 whitespace-nowrap">
-                <a
-                    href="#"
+                <button
+                
                     className="inline-block px-4 py-2 text-xs font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700"
                 >
                     View
-                </a>
+                </button>
             </td>
         </tr>
         </>

@@ -15,7 +15,7 @@ export const InventoryTable = ({ data, searchTerm }) => {
         const storeMatch =
             inventoryFilters.store === 'All' || item.store === inventoryFilters.store;
         const categoryMatch =
-            inventoryFilters.category === 'All' || item.category === inventoryFilters.category;
+            inventoryFilters.category === 'All' || item.category.name === inventoryFilters.category;
         // Aplicar el filtro de búsqueda solo si searchTerm no está vacío
         const searchTermMatch = searchTerm ? item.name.toLowerCase().includes(searchTerm.toLowerCase()) : true;
         
@@ -88,7 +88,7 @@ export const InventoryTable = ({ data, searchTerm }) => {
 
                 <tbody className="divide-y divide-gray-200">
                     {currentItems.map((item, index) => (
-                        <InventoryTableRow key={index} {...item} />
+                        <InventoryTableRow key={index} {...item} category={item.category.name} />
                     ))}
                 </tbody>
             </table>

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PosifyLayout } from '../../layout/PosifyLayout'
 import { InventoryTable } from '../components/Inventory/InventoryTable'
 import { AiOutlineSearch } from "react-icons/ai";
 import { DropDown } from '../components/DropDown';
 import { useNavigate } from 'react-router-dom';
+import { usePosStore } from '../../hooks/usePos';
 
 const testData2 = [
   {
@@ -255,11 +256,23 @@ export const InventoryPage = () => {
 
   const navigate = useNavigate()
 
+  const { startLoadingInventory , products , startLoadingCategories, categories} = usePosStore();
+
   const [searchTerm, setSearchTerm] = useState('')
 
   const onSearchChange = (e) => {
     setSearchTerm(e.target.value);
   }
+
+  
+  useEffect(() => {
+
+    startLoadingCategories();
+    startLoadingInventory();
+
+  }, [])
+
+  const categoryNames = categories.map((category) => category.name);
 
 
   return (
@@ -281,7 +294,7 @@ export const InventoryPage = () => {
 
           <div className='flex flex-col-reverse sm:flex-row '>
             <DropDown buttonLabel={'Tienda'} anchorLabels={['Todas', 'Tienda A', 'Tienda B']} filterName={'store'} />
-            <DropDown buttonLabel={'Categoria'} anchorLabels={['Todas', 'Electrónica', 'Ropa']} filterName={'category'} />
+            <DropDown buttonLabel={'Categoria'} anchorLabels={['Todas', ...categoryNames]} filterName={'category'} />
 
             <div className='flex flex-row-reverse justify-end my-4'>
               <input type="text" className='self-center w-full mx-2 text-sm text-gray-700 border-indigo-500 rounded h-7' 
@@ -297,7 +310,7 @@ export const InventoryPage = () => {
 
 
         <div className="overflow-x-auto overflow-y-auto shadow-2xl">
-          <InventoryTable data={testData2} searchTerm={searchTerm} />
+          <InventoryTable data={products} searchTerm={searchTerm} />
         </div>
 
 

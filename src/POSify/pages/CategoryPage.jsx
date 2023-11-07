@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PosifyLayout } from '../../layout/PosifyLayout'
 import { AiOutlineCheck } from "react-icons/ai";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm';
+import { usePosStore } from '../../hooks/usePos';
 
 export const CategoryPage = () => {
 
- 
 
+  const {  startSavingCategory } = usePosStore();
+
+  const { name , color , onInputChange } = useForm({
+    name: '',
+    color: ''
+  })
+
+ 
+  
+  
   const [selectedDiv, setSelectedDiv] = useState(null);
 
   const navigate = useNavigate();
@@ -14,6 +25,20 @@ export const CategoryPage = () => {
   const onDivClick = (index) => {
     setSelectedDiv(index);
   };
+
+
+  const onFormSubmit = () => {
+    
+   
+    const newCategory = {
+      name,
+      color: divs[selectedDiv]
+    }
+    
+    startSavingCategory(newCategory);
+    navigate(-1);
+
+  }
 
   const divs = [
     'bg-slate-600',
@@ -40,7 +65,9 @@ export const CategoryPage = () => {
           >
             <input
               type="text"
-
+              name="name"
+              value={name}
+              onChange={onInputChange}
               className="placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
               placeholder="Category"
             />
@@ -75,6 +102,7 @@ export const CategoryPage = () => {
 
             <button
               className="inline-block w-3/6 px-3 py-3 ml-2 text-sm font-medium text-white bg-indigo-600 border border-indigo-600 rounded sm:w-1/6 hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+              onClick={onFormSubmit}
             >
               Save
             </button>

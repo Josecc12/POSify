@@ -5,19 +5,47 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
 import { Inventory, ProductDetails, Stores } from '../components/Item';
 import { ViewInPOS } from '../components/Item/ViewInPOS';
+import { useForm } from '../../hooks/useForm';
+import { usePosStore } from '../../hooks/usePos';
 
 export const ItemPage = () => {
 
+    const { startSavingProduct} = usePosStore();
+
     const navigate = useNavigate();
+
+    const { formState, onInputChange} = useForm({
+        name: '',
+        category: '',
+        description: '',
+        soldBy: '',
+        price: 0,
+        cost: 0,
+        reference: '',
+        barcode: '',
+        trackInventory: false,
+        stock: 0,
+        store: 'Tienda A',
+        imageUrl: ''
+        
+    });
+
+    const onSave = () => { 
+
+       
+
+        startSavingProduct(formState);
+        navigate(-1);
+    }
 
 
 
     return (
         <PosifyLayout>
             <div className="h-full max-h-screen p-6 overflow-x-auto border-gray-400 border-solid">
-                <ProductDetails />
+                <ProductDetails  {...formState} onInputChange={onInputChange}/>
 
-                <Inventory />
+                <Inventory {...formState} onInputChange={onInputChange} />
 
                 <Stores />
 
@@ -46,6 +74,7 @@ export const ItemPage = () => {
                         </button>
                         <button
                             className="inline-block w-full px-3 py-3 ml-2 text-sm font-medium text-white bg-indigo-600 border border-indigo-600 rounded sm:w-full hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                            onClick={onSave}
                         >
                             Save
                         </button>

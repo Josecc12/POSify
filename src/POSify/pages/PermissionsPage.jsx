@@ -1,28 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PosifyLayout } from '../../layout/PosifyLayout';
 import { PermissionsTable } from '../components/Permissions/PermissionsTable';
-
+import { usePosStore } from '../../hooks/usePos';
 
 // import PermissionsTable from './PermissionsTable';
 
-// Datos de prueba (reemplaza con tus propios datos)
-const rolesData = [
-  {
-    id: 1,
-    role: 'Admin',
-    acces: ['POS', 'ADM'],
-    employees:  1,
-  },
-  {
-    id: 2,
-    role: 'Usuario',
-    acces: ['POS'],
-    employees: 10,
-  },
-  // Agrega más datos de roles y permisos aquí
-];
+
 
 export const PermissionsPage = () => {
+
+  const [rolesData, setRolesData] = useState([]);
+
+  const { statrtLoadingRole , roles } = usePosStore();
+
+  useEffect(() => {
+
+    statrtLoadingRole()
+
+  }, []);
+
   return (
     <PosifyLayout>
       
@@ -47,7 +43,7 @@ export const PermissionsPage = () => {
 
 
         <div className="w-full overflow-x-auto overflow-y-auto shadow-2xl lg:w-2/4 ">
-          <PermissionsTable data={rolesData} />
+          <PermissionsTable data={roles} />
 
         </div>
 

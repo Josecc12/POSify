@@ -11,6 +11,11 @@ import { useMenuStore } from '../../hooks/useMenu'
 
 const menuItems = [
   {
+    icon: <BiStoreAlt className='md:text-2xl' />,
+    text: 'POS',
+    to: '/pos',
+  },
+  {
     icon: <TfiStatsUp className='md:text-2xl'/>,
     text: 'Dashboard',
     subMenu: [

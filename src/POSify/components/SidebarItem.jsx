@@ -30,13 +30,13 @@ export const SidebarItem = ({ icon, text, subMenu ,to }) => {
 
     return (
         <div className="menu-item">
-            <a className="flex items-center px-4 py-2 mt-5 text-gray-200 transition-colors duration-300 transform rounded-md hover:bg-slate-700 hover:text-white" href="#" onClick={onButton}>
+            <button className="flex items-center px-4 py-2 mt-5 text-gray-200 transition-colors duration-300 transform rounded-md hover:bg-slate-700 hover:text-white"  onClick={onButton}>
                 {icon}
                 <span className="mx-4 font-medium">{text}</span>
 
                 {subMenu && <MdExpandMore data-testid="expand-icon" />}
 
-            </a>
+            </button>
 
             {subMenu && <SideberSubItem visible={isDrop} items={subMenu}/>}
 

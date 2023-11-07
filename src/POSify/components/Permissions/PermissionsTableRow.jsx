@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const PermissionsTableRow = ({id, role ,acces,employees}) => {
+export const PermissionsTableRow = ({id, name ,acces,employees}) => {
 
   const navigate = useNavigate();
 
@@ -21,16 +21,16 @@ export const PermissionsTableRow = ({id, role ,acces,employees}) => {
         <div className="flex items-center gap-x-2">
           <div className={`object-cover w-10 h-10 rounded-full bg-orange-400 `}></div>
           <div>
-            <h2 className="font-medium text-gray-800 dark:text-white ">{role}</h2>
+            <h2 className="font-medium text-gray-800 dark:text-white ">{name}</h2>
 
           </div>
 
         </div>
       </td>
 
-      <td className="px-4 py-2 text-left gray-700 tex-ce whitespace-nowrap">{acces}</td>
+      <td className="px-4 py-2 text-left gray-700 tex-ce whitespace-nowrap">--</td>
 
-      <td className="px-4 py-2 text-right text-gray-700 whitespace-nowrap">{employees}</td>
+      <td className="px-4 py-2 text-right text-gray-700 whitespace-nowrap">--</td>
 
     </tr>
   )

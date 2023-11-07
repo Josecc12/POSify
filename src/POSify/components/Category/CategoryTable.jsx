@@ -1,27 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CategoryTableRow } from './CategoryTableRow'
+import { usePosStore } from '../../../hooks/usePos'
 
-const categories = [
+const categories2 = [
 
     {   
-        id: 1,
+        _id: 1,
         color: 'bg-red-500',
-        category : 'Food'
+        name : 'Food'
     },
     {
-        id: 2,
+        _id: 2,
         color: 'bg-indigo-500',
-        category : 'Service'
+        name : 'Service'
     },
     {
-        id: 3,
+        _id: 3,
         color: 'bg-green-500',
-        category : 'Drink'
+        name : 'Drink'
     }
 
 ]
 
 export const CategoryTable = () => {
+
+    const { categories , startLoadingCategories} = usePosStore()
+
+    useEffect(() => {
+        startLoadingCategories()
+
+    }, [])
+    
     return (
         <>
             <table className="mt-5 text-sm bg-white divide-y-2 divide-gray-200 min-w-max">
@@ -49,8 +58,8 @@ export const CategoryTable = () => {
                     {
                         categories.map((category) => (
                             <CategoryTableRow key={category.category} 
-                            id={category.id}
-                            color={category.color} category={category.category} />
+                            id={category._id}
+                            color={category.color} category={category.name} />
                         ))
                     }
                 </tbody>

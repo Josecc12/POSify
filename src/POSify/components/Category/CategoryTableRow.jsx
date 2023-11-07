@@ -5,6 +5,9 @@ export const CategoryTableRow = ({ id, color, category }) => {
 
   const navigate = useNavigate()
 
+ 
+
+    
 
   return (
     <>
